@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduvault - Resources</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+      <!-- Header Section -->
+      <header class="header">
+        <div class="logo">
+            <a href="index.html">Eduvault</a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="resources.html">Resources</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for resources...">
+            <i class="fas fa-search" onclick="performSearch()"></i>
+        </div>
+    </header>
+
+
+ 
+
+        <div id="default-content" class="default-content">
+            <h2>Explore Our Resources</h2>
+            <p>Browse through our extensive collection of resources, tools, and materials designed to help students excel in their studies. Click on the category you want to learn and see the tools you need</p>
+         
+            <!-- Add some default content or cards here -->
+           <!-- Search Results -->
+<div class="result-card">
+    <h3>App Development</h3>
+    <p>Learn how to create mobile applications using popular development tools and frameworks.</p>
+    <button onclick="showCategoryDetails('App Development', ['Xcode', 'Android Studio', 'React Native'])">View Details</button>
+</div>
+<div class="result-card">
+    <h3>Game Development</h3>
+    <p>Explore the world of game creation with top-notch game development engines and tools.</p>
+    <button onclick="showCategoryDetails('Game Development', ['Unity', 'Unreal Engine', 'Godot'])">View Details</button>
+</div>
+
+<!-- Add more result cards as needed -->
+
+        </div>
+
+        <div id="results" class="results">
+            <!-- Search results will be displayed here -->
+        </div>
+
+        <!-- Category Details Pop-up -->
+        <div id="category-popup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('category-popup')">&times;</span>
+                <h3 id="category-title">Category Title</h3>
+                <div id="category-details">
+                    <!-- Category details will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Resource Details Pop-up -->
+        <div id="resource-popup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('resource-popup')">&times;</span>
+                <h3 id="resource-title">Resource Title</h3>
+                <div id="resource-details">
+                    <!-- Resource details will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html">Eduvault</a>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@eduvault.com</p>
+                <p>Phone: 678 363 741</p>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter to stay updated.</p>
+                <form>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Eduvault. All rights reserved.</p>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function performSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            if (query) {
+                window.location.href = `resources.html?search=${query}`;
+            }
+        }
+    
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+    
+        function searchResources() {
+            const query = getQueryParam('search');
+            const defaultContent = document.getElementById('default-content');
+            const resultsContainer = document.getElementById('results');
+    
+            if (query) {
+                document.getElementById('search-input').value = query;
+                defaultContent.style.display = 'none';
+                resultsContainer.style.display = 'flex';
+                resultsContainer.innerHTML = '';
+    
+                const categories = [
+                    { name: 'App Development', tools: ['Xcode', 'Android Studio', 'React Native'] },
+                    { name: 'Game Development', tools: ['Unity', 'Unreal Engine', 'Godot'] },
+                    { name: 'Machine Learning', tools: ['Python', '#C', 'C++'] },
+                ];
+    
+                const filteredCategories = categories.filter(category => category.name.toLowerCase().includes(query));
+    
+                if (filteredCategories.length === 0) {
+                    resultsContainer.innerHTML = `<div class="no-results">No results found for "${query}".</div>`;
+                } else {
+                    filteredCategories.forEach(category => {
+                        const card = document.createElement('div');
+                        card.className = 'result-card';
+                        card.innerHTML = `<h3>${category.name}</h3><button onclick="showCategoryDetails('${category.name}', ['${category.tools.join("', '")}'])">View Details</button>`;
+                        resultsContainer.appendChild(card);
+                    });
+                }
+            } else {
+                defaultContent.style.display = 'block';
+                resultsContainer.style.display = 'none';
+            }
+        }
+    
+        function showCategoryDetails(category, tools) {
+            const popup = document.getElementById('category-popup');
+            const title = document.getElementById('category-title');
+            const details = document.getElementById('category-details');
+    
+            title.textContent = category;
+            details.innerHTML = '';
+    
+            tools.forEach(tool => {
+                const toolItem = document.createElement('div');
+                toolItem.className = 'tool-item';
+                toolItem.innerHTML = `
+                    <p onclick="toggleDropdown('${tool}')">${tool}</p>
+                    <div id="${tool}-dropdown" class="dropdown-content">
+                        <p onclick="showResourceDetails('${tool}', 'Videos')">Videos on ${tool}</p>
+                        <p onclick="showResourceDetails('${tool}', 'PDFs')">PDFs on ${tool}</p>
+                        <p onclick="showResourceDetails('${tool}', 'Links')">Links on ${tool}</p>
+                    </div>
+                `;
+                details.appendChild(toolItem);
+            });
+    
+            popup.style.display = 'block';
+        }
+    
+        function toggleDropdown(tool) {
+            const dropdown = document.getElementById(`${tool}-dropdown`);
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    
+        function showResourceDetails(tool, format) {
+            const popup = document.getElementById('resource-popup');
+            const title = document.getElementById('resource-title');
+            const details = document.getElementById('resource-details');
+    
+            title.textContent = `${format} on ${tool}`;
+            details.innerHTML = `
+                <p><a href="#">${format} 1 on ${tool}</a></p>
+                <p><a href="#">${format} 2 on ${tool}</a></p>
+                <p><a href="#">${format} 3 on ${tool}</a></p>
+            `;
+    
+            popup.style.display = 'block';
+        }
+    
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+    
+        window.onload = searchResources;
+    </script>
+
+<button onclick="topFunction()" id="scrollToTopBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+<script>
+    // JavaScript for scrolling to the top function
+function topFunction() {
+document.body.scrollTop = 0; // For Safari
+document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+}
+
+// Show or hide the scroll to top button based on scroll position
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("scrollToTopBtn").style.display = "block";
+} else {
+    document.getElementById("scrollToTopBtn").style.display = "none";
+}
+}
+</script>
+    
+</body>
+</html>
