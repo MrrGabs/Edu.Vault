@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url(background4.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    animation: moveBackground 20s infinite alternate ease-in-out;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: center center;
+    }
+    50% {
+        background-position: center top;
+    }
+    100% {
+        background-position: center center;
+    }
+}
+
+.content-container {
+    text-align: left;
+    margin-right: auto;
+    padding: 20px;
+    background: url(background4.jpg) no-repeat ;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease;
+    max-width: 400px;
+    transform: translateX(-50%);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#welcome-message {
+    font-size: 3.5em;
+    color: #0277bd;
+    font-weight: bold;
+    animation: textGlow 3s infinite alternate;
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 5px #0277bd, 0 0 10px #0277bd, 0 0 15px #3fa9f5, 0 0 20px #3fa9f5;
+    }
+    to {
+        text-shadow: 0 0 10px #0277bd, 0 0 20px #0277bd, 0 0 30px #3fa9f5, 0 0 40px #3fa9f5;
+    }
+}
+
+#sub-message {
+    font-size: 1.8em;
+    color: #555;
+    margin-top: 10px;
+    animation: textAppearDisappear 10s infinite alternate;
+}
+
+@keyframes textAppearDisappear {
+    0%, 20%, 80%, 100% {
+        opacity: 1;
+    }
+    40%, 60% {
+        opacity: 0;
+    }
+}
+
+.nav-bar {
+    background: linear-gradient(to right, #055583, #3fa9f5, #7df0ff);
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    height: 100px; /* Adjust height as needed */
+    width: auto; 
+    position: relative;
+ /* Maintain aspect ratio */
+ margin-left: 100px;
+}
+
+.nav-bar nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-bar nav ul li {
+    margin: 0 10px;
+    background-color: transparent; /* Background color for the nav items */
+    border-radius: 15px; /* Round edges */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-bar nav ul li a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px; /* Padding inside the nav items */
+    display: block; /* Makes the entire area clickable */
+    transition: color 0.3s ease;
+}
+
+.nav-bar nav ul li:hover {
+    background-color:#0277bd ; /* Change background color on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.nav-bar nav ul li a:hover {
+    color: white; /* Change text color on hover */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    font-size: 20px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 25px;
+    outline: 1px solid white;
+    width: 300px;
+    height: 40px; /* Set the desired width */
+    color: black;
+    background: #055583S;
+    transition: border-color 0.3s ease; /* Keep a transition for a smooth border color change */
+    
+}
+
+.search-bar input:focus {
+    border-color: transparent; /* Change border color on focus */
+}
+
+
+
+.search-bar button {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    color: white;
+    height: 40px;
+    width: 40px;
+}
+
+.search-bar button:hover {
+    background: #41d7eb;
+    transition: .2s fade;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -20px;
+    background: url(background4.jpg) no-repeat center center fixed;
+    background-size: cover;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    max-width: 90%;
+    animation: fadeIn 1s ease;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    display: none;
+    flex-direction: column;
+}
+
+.form.active {
+    display: flex;
+}
+
+.form input {
+    margin: 10px 0;
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid #0277bd;
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    color: #0277bd;
+    font-size: 18px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form input:hover, .form input:focus {
+    border-color: #3fa9f5;
+    box-shadow: 0 0 8px rgba(2, 119, 189, 0.5);
+}
+
+.form button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #0277bd, #3fa9f5);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 18px;
+}
+
+.form button:hover {
+    background: linear-gradient(to right, #025a9f, #0277bd);
+}
+
+.switch-form {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.switch-form a {
+    color: #0277bd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.switch-form a:hover {
+    color: #025a9f;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-media a {
+    color: #0277bd;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-media a:hover {
+    color: #025a9f;
+    transform: scale(1.2);
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(to left, #055583, #3fa9f5, #7df0ff);
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#form-container h1 {
+    font-size: 2.5em;
+    color: #0277bd;
+    margin-bottom: 20px;
+}
+
+/* General styles and animations remain the same */
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 80%;
+        padding: 20px;
+    }
+
+    #login-form h1, #signup-form h1 {
+        font-size: 2em;
+    }
+
+    .form input {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .form button {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .nav-bar {
+        padding: 10px;
+    }
+
+    .nav-bar nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-bar nav ul li {
+        margin: 5px 0;
+    }
+
+    .search-bar input {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-bar nav ul li a {
+        padding: 8px 15px;
+        font-size: 16px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    #login-form h1, #signup-form h1 {
+        font-size: 1.8em;
+    }
+
+    .form input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .form button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .search-bar input {
+        width: 120px;
+    }
+}
+
+@media (max-width: 320px) {
+    .nav-bar nav ul li a {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    #login-form h1, #signup-form h1 {
+        font-size: 1.5em;
+    }
+
+    .form input {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .form button {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .search-bar input {
+        width: 100px;
+    }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Eduvault</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">Eduvault</a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="resources.html">Resources</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for resources...">
+            <i class="fas fa-search" onclick="performSearch()"></i>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="about-content">
+            <h1>About Eduvault</h1>
+            <p class="tagline">Empowering Students Through Digital Learning</p>
+        </div>
+    </section>
+
+    <section class="about-story">
+        <div class="story-content">
+            <h2>Our Story</h2>
+            <p>Eduvault began with a simple mission: to make quality educational resources accessible to every student. Founded in 2023, we've grown into a trusted platform serving thousands of learners worldwide.</p>
+        </div>
+    </section>
+
+    <section class="about-mission">
+        <div class="mission-cards">
+            <div class="mission-card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Our Mission</h3>
+                <p>To democratize education by providing accessible, high-quality learning resources to students globally.</p>
+            </div>
+            <div class="mission-card">
+                <i class="fas fa-eye"></i>
+                <h3>Our Vision</h3>
+                <p>To become the world's leading digital education platform, empowering the next generation of learners.</p>
+            </div>
+            <div class="mission-card">
+                <i class="fas fa-heart"></i>
+                <h3>Our Values</h3>
+                <p>Excellence, Innovation, Accessibility, and Student Success drive everything we do.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-img">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3>Tando Calvin</h3>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <div class="member-img">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3>T. Elsa</h3>
+                <p>Head of Education</p>
+            </div>
+            <div class="team-member">
+                <div class="member-img">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3>Tardzenuy Nancy</h3>
+                <p>Tech Lead</p>
+            </div>
+        </div>
+    </section>
+
+
+    <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Eduvault</a>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@eduvault.com</p>
+                    <p>Phone: 678 363 741</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to stay updated.</p>
+                    <form>
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eduvault. All rights reserved.</p>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+    <script>
+        // JavaScript for scrolling to the top function
+    function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    }
+    
+    // Show or hide the scroll to top button based on scroll position
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("scrollToTopBtn").style.display = "block";
+    } else {
+        document.getElementById("scrollToTopBtn").style.display = "none";
+    }
+    }
+    </script>
+</body>
+</html>
